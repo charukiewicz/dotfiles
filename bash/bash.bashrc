@@ -128,3 +128,5 @@ PS1="${LB} ${UC}λ ${DC}\W ${RB}${DF} "
 }
 
 ###### END PROMPT CONFIG ######
+
+alias devmode="sh ~/scripts/devmode.sh"
