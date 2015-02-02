@@ -1,6 +1,5 @@
-# This file should be moved to /etc/bash.bashrc for system configuration
-# Or to ~/.bashrc for individual user configuration
-# Type `source /path/to/bashrc` to load it without launching a new terminal
+# Symlink: sudo ln -s /path/to/dotfiles/bash/bash.bashrc /etc/bash.bashrc
+# Remove (or backup) /etc/bash.bashrc, ~/.bashrc, and /root/.bashrc for this to function properly
 
 if [ -f /etc/bash_completion ]; then
 	    . /etc/bash_completion
@@ -112,8 +111,8 @@ then
   LB="${DF}["
   RB="${DF}]"
 else # fail
-  LB="${RED}[${DF}"
-  RB="${RED}]${DF}"
+  LB="${BRED}[${DF}"
+  RB="${BRED}]${DF}"
 fi
 if [ $UID -eq 0 ] #root user color
 then
