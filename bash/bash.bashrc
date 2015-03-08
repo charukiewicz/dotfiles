@@ -124,7 +124,20 @@ fi
 #directory color
 DC="${BGREEN}"
 
-PS1="${LB} ${UC}λ ${DC}\W ${RB}${DF} "
+
+# Get Virtual Env
+if [[ $VIRTUAL_ENV != "" ]]
+    then
+      # Strip out the path and just leave the env name
+      venv="${BRED}(${VIRTUAL_ENV##*/}) "
+else
+      # In case you don't have one activated
+      venv=''
+fi
+
+
+
+PS1="${venv}${LB} ${UC}λ ${DC}\W ${RB}${DF} "
 }
 
 ###### END PROMPT CONFIG ######
