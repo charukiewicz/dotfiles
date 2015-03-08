@@ -134,9 +134,9 @@ else
       # In case you don't have one activated
       venv=''
 fi
+# End Virtual Env Setting
 
-
-
+# Configure the final Prompt
 PS1="${venv}${LB} ${UC}λ ${DC}\W ${RB}${DF} "
 }
 
