@@ -141,3 +141,8 @@ PS1="${venv}${LB} ${UC}λ ${DC}\W ${RB}${DF} "
 }
 
 ###### END PROMPT CONFIG ######
+<<<<<<< HEAD
+=======
+
+alias devmode="sh ~/scripts/devmode.sh"
+>>>>>>> 7e0e176259ae526429d1e388dd343ed734c57e6d
