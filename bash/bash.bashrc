@@ -136,8 +136,16 @@ else
 fi
 # End Virtual Env Setting
 
+if [ `hostname` = "solidus" ]
+	then ICON="Ξ"
+elif [ `hostname` = "cypher" ] 
+	then ICON="λ"
+else
+	ICON="?"
+fi
+
 # Configure the final Prompt
-PS1="${venv}${LB} ${UC}λ ${DC}\W ${RB}${DF} "
+PS1="${venv}${LB} ${UC}${ICON} ${DC}\W ${RB}${DF} "
 }
 
 ###### END PROMPT CONFIG ######

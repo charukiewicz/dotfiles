@@ -1,2 +1,2 @@
 syntax on
-colo delek
+colo elflord
