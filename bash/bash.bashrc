@@ -140,6 +140,8 @@ if [ `hostname` = "solidus" ]
 	then ICON="Ξ"
 elif [ `hostname` = "cypher" ] 
 	then ICON="λ"
+elif [ `hostname` = "manjaro" ]
+	then ICON="ϕ"
 else
 	ICON="?"
 fi
