@@ -18,7 +18,7 @@ set autoindent
 set shiftwidth=4
 
 " show the matching part of the pair for [] {} and ()
-set showmatch
+" set showmatch
 
 " search as characters are entered
 set incsearch
