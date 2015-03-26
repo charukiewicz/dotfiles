@@ -13,6 +13,7 @@ set softtabstop=4
 
 " indent when moving to the next line
 set autoindent
+set pastetoggle=<F2>
 
 " when using the >> or << commands, shift lines by 4 spaces
 set shiftwidth=4
