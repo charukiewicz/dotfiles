@@ -41,6 +41,6 @@ set autoindent
 set pastetoggle=<leader>p
 
 " highlight the line that the cursor/column is on
-hi CursorLine   cterm=NONE ctermbg=darkgreen ctermfg=white guibg=red guifg=white
-" hi CursorColumn cterm=NONE ctermbg=darkgreen ctermfg=white guibg=red guifg=white
+hi CursorLine   cterm=NONE ctermbg=DarkMagenta guibg=red guifg=white
+hi CursorColumn cterm=NONE ctermbg=DarkMagenta guibg=red guifg=white
 nnoremap <Leader>c :set cursorline!<CR>
