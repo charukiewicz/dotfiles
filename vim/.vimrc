@@ -40,3 +40,5 @@ set foldenable
 nnoremap j gj
 nnoremap k gk
 
+" tabs turn into spaces
+set expandtab
