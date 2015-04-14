@@ -11,10 +11,6 @@ set number
 set tabstop=4
 set softtabstop=4
 
-" indent when moving to the next line
-set autoindent
-set pastetoggle=<F2>
-
 " when using the >> or << commands, shift lines by 4 spaces
 set shiftwidth=4
 
@@ -42,3 +38,12 @@ nnoremap k gk
 
 " tabs turn into spaces
 set expandtab
+
+" indent when moving to the next line
+set autoindent
+set pastetoggle=<leader>p
+
+" highlight the line that the cursor/column is on
+hi CursorLine   cterm=NONE ctermbg=DarkMagenta guibg=red guifg=white
+hi CursorColumn cterm=NONE ctermbg=DarkMagenta guibg=red guifg=white
+nnoremap <Leader>c :set cursorline!<CR>
