@@ -47,3 +47,9 @@ set pastetoggle=<leader>p
 hi CursorLine   cterm=NONE ctermbg=DarkMagenta guibg=red guifg=white
 hi CursorColumn cterm=NONE ctermbg=DarkMagenta guibg=red guifg=white
 nnoremap <Leader>c :set cursorline!<CR>
+
+" toggle spellcheck
+:map <Leader>s :setlocal spell! spelllang=en_us<CR>
+
+" turn on autocomplete (use with C-n or C-p in insert mode)
+set complete+=kspell
