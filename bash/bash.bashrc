@@ -59,7 +59,7 @@ ex ()
 # prompt
 BROWSER=/usr/bin/xdg-open
 
-PATH=$PATH:/home/christian/.gem/ruby/2.1.0/bin
+PATH=$PATH:/home/christian/.gem/ruby/2.1.0/bin:/home/christian/.cabal/bin
 export PATH
 
 #if [ "`id -u`" -eq 0 ]; then
