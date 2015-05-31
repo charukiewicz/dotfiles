@@ -32,6 +32,8 @@ alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias np='nano PKGBUILD'
 
+alias lssl='du -a -h --max-depth=1 | sort -hr'  # list sizes of files in current directory
+
 # ex - archive extractor
 # usage: ex <file>
 ex ()
