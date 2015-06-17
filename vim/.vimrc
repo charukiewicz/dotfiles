@@ -12,6 +12,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'vim-airline'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -45,6 +46,9 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 """"""""""""""""""""""""""""""""""""""""""""""
+
+" powerline config
+let g:airline_powerline_fonts = 1
 
 " enable language-specific syntax highlighting
 syntax enable
@@ -118,3 +122,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+let g:syntastic_php_checkers=['php','phpcs','phpmd']
+let g:syntastic_javascript_checkers = ['jshint']
