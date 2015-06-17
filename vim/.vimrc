@@ -47,11 +47,15 @@ filetype plugin indent on    " required
 
 """"""""""""""""""""""""""""""""""""""""""""""
 
-" powerline config
+" airline config
 let g:airline_powerline_fonts = 1
+set laststatus=2
 
 " enable language-specific syntax highlighting
 syntax enable
+
+" enable 256 colors
+set t_Co=256
 
 " set color theme
 colo elflord
