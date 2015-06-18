@@ -5,6 +5,10 @@ if [ -f /etc/bash_completion ]; then
 	    . /etc/bash_completion
 fi
 
+if [ -e /usr/share/terminfo/x/xterm-256color ] && [ "$COLORTERM" == "xfce4-terminal" ]; then
+    export TERM=xterm-256color
+fi
+
 xhost +local:root > /dev/null 2>&1
 
 complete -cf sudo
