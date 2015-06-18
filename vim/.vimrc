@@ -14,9 +14,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline'
 
-" Colorschemes
-Plugin 'paranoida/vim-airlineish'
-
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -51,9 +48,10 @@ filetype plugin indent on    " required
 """"""""""""""""""""""""""""""""""""""""""""""
 
 " airline config
-let g:airline_powerline_fonts = 1
+if empty($SSH_CLIENT)
+    let g:airline_powerline_fonts = 1
+endif
 set laststatus=2
-"let g:airline_theme = 'airlineish'
 
 " enable language-specific syntax highlighting
 syntax enable
