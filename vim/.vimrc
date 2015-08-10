@@ -132,3 +132,6 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_php_checkers=['php','phpcs','phpmd']
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_haskell_checkers = ['hlint']
+
+map <silent> <Leader>e :Errors<CR>
+map <Leader>w :SyntasticToggleMode<CR>
