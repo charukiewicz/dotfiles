@@ -14,6 +14,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline'
 Plugin 'unblevable/quick-scope'
+Plugin 'kien/ctrlp.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
