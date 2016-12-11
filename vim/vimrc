@@ -13,7 +13,12 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline'
+Plugin 'kien/ctrlp.vim'
 Plugin 'unblevable/quick-scope'
+Plugin 'lambdatoast/elm.vim'
+Plugin 'pbrisbin/vim-syntax-shakespeare'
+
+" Plugin Graveyard
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -49,13 +54,19 @@ filetype plugin indent on    " required
 """"""""""""""""""""""""""""""""""""""""""""""
 
 " airline config
-if empty($SSH_CLIENT)
-    let g:airline_powerline_fonts = 1
-endif
+"if empty($SSH_CLIENT)
+"    let g:airline_powerline_fonts = 1
+"elseif $SSH_CLIENT =~ "IP_ADDR"
+"    let g:airline_powerline_fonts = 1
+"endif
+let g:airline_powerline_fonts = 1
 set laststatus=2
 
 " enable language-specific syntax highlighting
 syntax enable
+
+" hide buffers rather than close them if unsaved changes persist on buffer switch
+set hidden
 
 " enable 256 colors
 set t_Co=256
@@ -105,7 +116,7 @@ set pastetoggle=<leader>p
 " highlight the line that the cursor/column is on
 hi CursorLine   cterm=NONE ctermbg=DarkMagenta guibg=red guifg=white
 hi CursorColumn cterm=NONE ctermbg=DarkMagenta guibg=red guifg=white
-nnoremap <Leader>c :set cursorline!<CR>
+nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
 " toggle spellcheck
 :map <Leader>s :setlocal spell! spelllang=en_us<CR>
