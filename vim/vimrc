@@ -18,8 +18,6 @@ Plugin 'unblevable/quick-scope'
 Plugin 'lambdatoast/elm.vim'
 Plugin 'pbrisbin/vim-syntax-shakespeare'
 
-" Plugin Graveyard
-
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo

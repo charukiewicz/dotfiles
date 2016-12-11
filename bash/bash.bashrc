@@ -66,6 +66,7 @@ ex ()
 BROWSER=/usr/bin/xdg-open
 
 PATH=$PATH:/home/christian/.gem/ruby/2.1.0/bin:/home/christian/.cabal/bin:/root/.local/bin
+PATH=$PATH:/home/christian/.gem/ruby/2.1.0/bin:/home/christian/.cabal/bin:~/bin
 export PATH
 
 #if [ "`id -u`" -eq 0 ]; then
@@ -149,7 +150,7 @@ elif [ `hostname` = "cypher" ]
 elif [ `hostname` = "manjaro" ]
 	then ICON="λ" # ϕ
 else
-	ICON="?"
+	ICON="ϕ"
 fi
 
 # Configure the final Prompt
@@ -159,6 +160,13 @@ PS1="${venv}${LB} ${UC}${ICON} ${DC}\W ${RB}${DF} "
 ###### END PROMPT CONFIG ######
 
 alias devmode="sh ~/scripts/devmode.sh"
+<<<<<<< HEAD
 export PATH="$HOME/.cabal/bin:/opt/cabal/1.20/bin:/opt/ghc/7.10.3/bin:$PATH"
 export PATH="$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH"
 
+=======
+
+# Monitor changes in directory
+# Requires inotify-tools package
+alias watchdir="inotifywait -m -e create -e delete -e modify ."
+>>>>>>> f8c0b5988c6a20eca6a21eabd98ad0d1263f7bd5
