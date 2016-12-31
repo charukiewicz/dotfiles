@@ -172,3 +172,12 @@ endfunction
 for i in g:qs_enable_char_list
     execute 'noremap <expr> <silent>' . i . " Quick_scope_selective('". i . "')"
 endfor
+
+" sane vim window switching (switch vim windows using only Ctrl + h,j,k,l)
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+" bind jj to Esc only in insert mode
+imap jj <Esc>
