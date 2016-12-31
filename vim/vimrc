@@ -13,13 +13,14 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline'
-Plugin 'unblevable/quick-scope'
 Plugin 'kien/ctrlp.vim'
 Plugin 'adoy/vim-php-refactoring-toolbox'
 Plugin 'godlygeek/tabular'
 Plugin 'wikitopian/hardmode'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'lambdatoast/elm.vim'
+Plugin 'unblevable/quick-scope'
+Plugin 'pbrisbin/vim-syntax-shakespeare'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -64,6 +65,9 @@ set laststatus=2
 
 " enable language-specific syntax highlighting
 syntax enable
+
+" hide buffers rather than close them if unsaved changes persist on buffer switch
+set hidden
 
 " enable 256 colors
 set t_Co=256
@@ -113,7 +117,7 @@ set pastetoggle=<leader>p
 " highlight the line that the cursor/column is on
 hi CursorLine   cterm=NONE ctermbg=DarkMagenta guibg=red guifg=white
 hi CursorColumn cterm=NONE ctermbg=DarkMagenta guibg=red guifg=white
-nnoremap <Leader>c :set cursorline!<CR>
+nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
 " toggle spellcheck
 :map <Leader>s :setlocal spell! spelllang=en_us<CR>
@@ -178,6 +182,7 @@ nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 " Turn on hard mode by default
 " autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 
+" Run a shell command via :Shell <cmd>
 command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
 function! s:RunShellCommand(cmdline)
   echo a:cmdline
@@ -201,3 +206,12 @@ endfunction
 map <leader><leader> :Shell ./build<CR><CR>
 
 map <leader>d :bd<CR>
+
+" sane vim window switching (switch vim windows using only Ctrl + h,j,k,l)
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+" bind jj to Esc only in insert mode
+imap jj <Esc>
