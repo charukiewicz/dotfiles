@@ -15,6 +15,11 @@ Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline'
 Plugin 'unblevable/quick-scope'
 Plugin 'kien/ctrlp.vim'
+Plugin 'adoy/vim-php-refactoring-toolbox'
+Plugin 'godlygeek/tabular'
+Plugin 'wikitopian/hardmode'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'lambdatoast/elm.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -48,11 +53,13 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 """"""""""""""""""""""""""""""""""""""""""""""
+"highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 
 " airline config
-if empty($SSH_CLIENT)
-    let g:airline_powerline_fonts = 1
-endif
+let g:airline_powerline_fonts = 0
+"if empty($SSH_CLIENT)
+"    let g:airline_powerline_fonts = 1
+"endif
 set laststatus=2
 
 " enable language-specific syntax highlighting
@@ -164,3 +171,33 @@ endfunction
 for i in g:qs_enable_char_list
     execute 'noremap <expr> <silent>' . i . " Quick_scope_selective('". i . "')"
 endfor
+
+" Toggle hard mode
+nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+
+" Turn on hard mode by default
+" autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+
+command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
+function! s:RunShellCommand(cmdline)
+  echo a:cmdline
+  let expanded_cmdline = a:cmdline
+  for part in split(a:cmdline, ' ')
+     if part[0] =~ '\v[%#<]'
+        let expanded_part = fnameescape(expand(part))
+        let expanded_cmdline = substitute(expanded_cmdline, part, expanded_part, '')
+     endif
+  endfor
+  botright new
+  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+  call setline(1, 'You entered:    ' . a:cmdline)
+  call setline(2, 'Expanded Form:  ' .expanded_cmdline)
+  call setline(3,substitute(getline(2),'.','=','g'))
+  execute '$read !'. expanded_cmdline
+  setlocal nomodifiable
+  1
+endfunction
+
+map <leader><leader> :Shell ./build<CR><CR>
+
+map <leader>d :bd<CR>
