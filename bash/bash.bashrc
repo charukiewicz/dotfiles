@@ -67,6 +67,7 @@ BROWSER=/usr/bin/xdg-open
 
 PATH=$PATH:/home/christian/.gem/ruby/2.1.0/bin:/home/christian/.cabal/bin:/root/.local/bin
 PATH=$PATH:/home/christian/.gem/ruby/2.1.0/bin:/home/christian/.cabal/bin:~/bin
+PATH=$PATH:/home/christian/.local/bin
 export PATH
 
 #if [ "`id -u`" -eq 0 ]; then
@@ -167,3 +168,6 @@ export PATH="$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH"
 # Monitor changes in directory
 # Requires inotify-tools package
 alias watchdir="inotifywait -m -e create -e delete -e modify ."
+
+VISUAL="vim"
+EDITOR="vim"
