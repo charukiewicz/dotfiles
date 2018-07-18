@@ -21,6 +21,10 @@ Plugin 'wikitopian/hardmode'
 Plugin 'lambdatoast/elm.vim'
 Plugin 'unblevable/quick-scope'
 Plugin 'pbrisbin/vim-syntax-shakespeare'
+"Plugin 'alx741/vim-hindent'
+Plugin 'nbouscal/vim-stylish-haskell'
+"Plugin 'sbdchd/neoformat'
+Plugin 'neovimhaskell/haskell-vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -125,6 +129,9 @@ nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 " turn on autocomplete (use with C-n or C-p in insert mode)
 set complete+=kspell
 
+" search for the text currently selected in visual mode with //
+vnoremap <expr> // 'y/\V'.escape(@",'\').'<CR>'
+
 " turn on NERDTree with C-n
 map <C-n> :NERDTreeToggle<CR>
 
@@ -216,11 +223,59 @@ nnoremap <c-l> <c-w>l
 " bind jj to Esc only in insert mode
 imap jj <Esc>
 
+"autocmd BufWritePost *.hs call HaskellFormat()
+
+function! HaskellFormat() abort
+	" save cursor position, folds and many other things
+    let l:curw = {}
+    try
+      mkview!
+    catch
+      let l:curw = winsaveview()
+    endtry
+
+    " save our undo file to be restored after we are done.
+    let l:tmpundofile = tempname()
+    exe 'wundo! ' . l:tmpundofile
+
+    "silent %!hindent
+
+	let l:tmpname = tempname() . '.hs'
+	call writefile(getline(1, '$'), l:tmpname)
+
+	" call elm-format on the temporary file
+	let l:out = system('hindent --indent-size 4 ' . l:tmpname)
+
+	if v:shell_error == 0
+		try | silent undojoin | catch | endtry
+
+		" replace current file with temp file, then reload buffer
+		let l:old_fileformat = &fileformat
+		call rename(l:tmpname, expand('%'))
+		silent edit!
+		let &fileformat = l:old_fileformat
+		let &syntax = &syntax
+	endif
+
+    " save our undo history
+    silent! exe 'rundo ' . l:tmpundofile
+    call delete(l:tmpundofile)
+
+	" restore our cursor/windows positions, folds, etc..
+    if empty(l:curw)
+      silent! loadview
+    else
+      call winrestview(l:curw)
+    endif
+endf
+
 " Elm format
 "set autoread
 "autocmd BufWritePost *.elm silent !elm-format --yes <afile>
 "autocmd BufWritePost *.elm redraw!
 autocmd BufWritePost *.elm call ElmFormat()
+
+
 
 " Vim command to format Elm files with elm-format
 function! ElmFormat() abort
@@ -291,3 +346,31 @@ fun! EchoLater(func_name, title, msg) abort
   let s:echo_title = a:title
   let s:echo_msg = a:msg
 endf
+
+" Path to directory in which to save vim sessions
+let session_path="~/.vim/sessions/"
+
+" Save vim session with given name
+function! s:MakeSession(sessionStr)
+    let sessionName=a:sessionStr
+    :set sessionoptions=buffers
+    exec "mksession " . g:session_path . sessionName . ".vim"
+endf
+
+command! -nargs=1 MakeSession call s:MakeSession(<f-args>)
+
+" Load vim session with given name
+function! s:LoadSession(sessionStr)
+    let sessionName=a:sessionStr
+    exec "source " . g:session_path . sessionName . ".vim"
+endf
+
+command! -nargs=1 Load call s:LoadSession(<f-args>)
+
+" Automatically save the current session whenever vim is closed
+autocmd VimLeave * exec "mksession!" g:session_path . "shutdown_session.vim"
+
+" <F7> restores that 'shutdown session'
+noremap <F7> :exe ":source " . g:session_path . "shutdown_session.vim"<CR>
+
+let g:haskell_disable_TH = 1
