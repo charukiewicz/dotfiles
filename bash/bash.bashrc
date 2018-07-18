@@ -69,6 +69,7 @@ PATH=$PATH:/home/christian/.cabal/bin:/root/.local/bin
 PATH=$PATH:/home/christian/.cabal/bin:~/bin
 PATH=$PATH:/home/christian/.local/bin
 PATH=$PATH:~/.local/bin
+PATH=$PATH:~/.npm-global/bin
 export PATH
 
 #if [ "`id -u`" -eq 0 ]; then
