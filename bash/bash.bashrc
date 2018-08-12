@@ -5,9 +5,9 @@ if [ -f /etc/bash_completion ]; then
 	    . /etc/bash_completion
 fi
 
-if [ -e /usr/share/terminfo/x/xterm-256color ] && [ "$COLORTERM" == "xfce4-terminal" ]; then
-    export TERM=xterm-256color
-fi
+#if [ -e /usr/share/terminfo/x/xterm-256color ] && [ "$COLORTERM" == "xfce4-terminal" ]; then
+#    export TERM=xterm-256color
+#fi
 
 xhost +local:root > /dev/null 2>&1
 
@@ -65,9 +65,10 @@ ex ()
 # prompt
 BROWSER=/usr/bin/xdg-open
 
-PATH=$PATH:/home/christian/.cabal/bin:/root/.local/bin
-PATH=$PATH:/home/christian/.cabal/bin:~/bin
-PATH=$PATH:/home/christian/.local/bin
+PATH=$PATH:~/.cabal/bin:/root/.local/bin
+PATH=$PATH:~/.cabal/bin:~/bin
+PATH=$PATH:~/.bin
+PATH=$PATH:~/.local/bin
 PATH=$PATH:~/.local/bin
 PATH=$PATH:~/.npm-global/bin
 export PATH
@@ -152,6 +153,8 @@ elif [ `hostname` = "cypher" ]
 	then ICON="λ"
 elif [ `hostname` = "manjaro" ]
 	then ICON="λ" # ϕ
+elif [ `hostname` = "monad" ]
+	then ICON="λ"
 else
 	ICON="ϕ"
 fi
@@ -169,5 +172,5 @@ alias devmode="sh ~/scripts/devmode.sh"
 # Requires inotify-tools package
 alias watchdir="inotifywait -m -e create -e delete -e modify ."
 
-VISUAL="vim"
-EDITOR="vim"
+export EDITOR="vim"
+export VISUAL="vim"
