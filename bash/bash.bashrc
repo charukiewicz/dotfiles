@@ -5,9 +5,9 @@ if [ -f /etc/bash_completion ]; then
 	    . /etc/bash_completion
 fi
 
-if [ -e /usr/share/terminfo/x/xterm-256color ] && [ "$COLORTERM" == "xfce4-terminal" ]; then
-    export TERM=xterm-256color
-fi
+#if [ -e /usr/share/terminfo/x/xterm-256color ] && [ "$COLORTERM" == "xfce4-terminal" ]; then
+#    export TERM=xterm-256color
+#fi
 
 xhost +local:root > /dev/null 2>&1
 
@@ -65,8 +65,10 @@ ex ()
 # prompt
 BROWSER=/usr/bin/xdg-open
 
-PATH=$PATH:/home/christian/.gem/ruby/2.1.0/bin:/home/christian/.cabal/bin:/root/.local/bin
-PATH=$PATH:/home/christian/.gem/ruby/2.1.0/bin:/home/christian/.cabal/bin:~/bin
+PATH=$PATH:~/.cabal/bin:/root/.local/bin
+PATH=$PATH:~/.cabal/bin:~/bin
+PATH=$PATH:~/.bin
+PATH=$PATH:~/.local/bin
 export PATH
 
 #if [ "`id -u`" -eq 0 ]; then
@@ -149,6 +151,8 @@ elif [ `hostname` = "cypher" ]
 	then ICON="λ"
 elif [ `hostname` = "manjaro" ]
 	then ICON="λ" # ϕ
+elif [ `hostname` = "monad" ]
+	then ICON="λ"
 else
 	ICON="ϕ"
 fi
@@ -167,3 +171,6 @@ export PATH="$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH"
 # Monitor changes in directory
 # Requires inotify-tools package
 alias watchdir="inotifywait -m -e create -e delete -e modify ."
+
+export EDITOR="vim"
+export VISUAL="vim"
