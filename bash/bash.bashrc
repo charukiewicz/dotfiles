@@ -69,6 +69,8 @@ PATH=$PATH:~/.cabal/bin:/root/.local/bin
 PATH=$PATH:~/.cabal/bin:~/bin
 PATH=$PATH:~/.bin
 PATH=$PATH:~/.local/bin
+PATH=$PATH:~/.local/bin
+PATH=$PATH:~/.npm-global/bin
 export PATH
 
 #if [ "`id -u`" -eq 0 ]; then
@@ -164,8 +166,6 @@ PS1="${venv}${LB} ${UC}${ICON} ${DC}\W ${RB}${DF} "
 ###### END PROMPT CONFIG ######
 
 alias devmode="sh ~/scripts/devmode.sh"
-export PATH="$HOME/.cabal/bin:/opt/cabal/1.20/bin:/opt/ghc/7.10.3/bin:$PATH"
-export PATH="$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH"
 
 
 # Monitor changes in directory
