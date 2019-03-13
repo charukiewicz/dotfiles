@@ -144,7 +144,7 @@ if [[ $VIRTUAL_ENV != "" ]]
 elif [[ $IN_NIX_SHELL != "" ]]
     then
       # Strip out the path and just leave the env name
-      venv="${BRED}(nix-shell) "
+      venv="${BRED}(λ) "
 else
       # In case you don't have one activated
       venv=''
