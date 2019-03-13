@@ -12,7 +12,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'vim-airline'
+Plugin 'vim-airline/vim-airline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'adoy/vim-php-refactoring-toolbox'
 Plugin 'godlygeek/tabular'
@@ -25,6 +25,7 @@ Plugin 'pbrisbin/vim-syntax-shakespeare'
 "Plugin 'nbouscal/vim-stylish-haskell'
 "Plugin 'sbdchd/neoformat'
 Plugin 'neovimhaskell/haskell-vim'
+Plugin 'LnL7/vim-nix'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -136,6 +137,9 @@ vnoremap <expr> // 'y/\V'.escape(@",'\').'<CR>'
 map <C-n> :NERDTreeToggle<CR>
 
 map <C-b> :CtrlPBuffer<CR>
+
+" ctrl-p file ignore
+set wildignore+=*.o,*.hi,*.dyn_o,*.dyn_hi,*.gz,*.zip
 
 " open NERDTree if no file specified
 autocmd StdinReadPre * let s:std_in=1
