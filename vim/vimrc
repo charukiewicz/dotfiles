@@ -12,7 +12,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'vim-airline'
+Plugin 'vim-airline/vim-airline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'adoy/vim-php-refactoring-toolbox'
 Plugin 'godlygeek/tabular'
@@ -25,6 +25,7 @@ Plugin 'pbrisbin/vim-syntax-shakespeare'
 "Plugin 'nbouscal/vim-stylish-haskell'
 "Plugin 'sbdchd/neoformat'
 Plugin 'neovimhaskell/haskell-vim'
+Plugin 'LnL7/vim-nix'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -135,6 +136,11 @@ vnoremap <expr> // 'y/\V'.escape(@",'\').'<CR>'
 " turn on NERDTree with C-n
 map <C-n> :NERDTreeToggle<CR>
 
+map <C-b> :CtrlPBuffer<CR>
+
+" ctrl-p file ignore
+set wildignore+=*.o,*.hi,*.dyn_o,*.dyn_hi,*.gz,*.zip
+
 " open NERDTree if no file specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -222,52 +228,6 @@ nnoremap <c-l> <c-w>l
 
 " bind jj to Esc only in insert mode
 imap jj <Esc>
-
-"autocmd BufWritePost *.hs call HaskellFormat()
-
-function! HaskellFormat() abort
-	" save cursor position, folds and many other things
-    let l:curw = {}
-    try
-      mkview!
-    catch
-      let l:curw = winsaveview()
-    endtry
-
-    " save our undo file to be restored after we are done.
-    let l:tmpundofile = tempname()
-    exe 'wundo! ' . l:tmpundofile
-
-    "silent %!hindent
-
-	let l:tmpname = tempname() . '.hs'
-	call writefile(getline(1, '$'), l:tmpname)
-
-	" call elm-format on the temporary file
-	let l:out = system('hindent --indent-size 4 ' . l:tmpname)
-
-	if v:shell_error == 0
-		try | silent undojoin | catch | endtry
-
-		" replace current file with temp file, then reload buffer
-		let l:old_fileformat = &fileformat
-		call rename(l:tmpname, expand('%'))
-		silent edit!
-		let &fileformat = l:old_fileformat
-		let &syntax = &syntax
-	endif
-
-    " save our undo history
-    silent! exe 'rundo ' . l:tmpundofile
-    call delete(l:tmpundofile)
-
-	" restore our cursor/windows positions, folds, etc..
-    if empty(l:curw)
-      silent! loadview
-    else
-      call winrestview(l:curw)
-    endif
-endf
 
 " Elm format
 "set autoread
@@ -374,6 +334,17 @@ autocmd VimLeave * exec "mksession!" g:session_path . "shutdown_session.vim"
 noremap <F7> :exe ":source " . g:session_path . "shutdown_session.vim"<CR>
 
 let g:haskell_disable_TH = 1
+
+function! HaskellToggleQQ() abort
+    if g:haskell_disable_TH == 1
+        let g:haskell_disable_TH = 0
+    else
+        let g:haskell_disable_TH = 1
+    endif
+endf
+
+nnoremap <leader>z call HaskellToggleQQ()
+
 
 " Stylish Haskell
 
