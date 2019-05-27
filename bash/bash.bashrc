@@ -174,3 +174,5 @@ alias watchdir="inotifywait -m -e create -e delete -e modify ."
 
 export EDITOR="vim"
 export VISUAL="vim"
+
+alias vpn="sudo openvpn /etc/openvpn/client/protonvpn.conf"
