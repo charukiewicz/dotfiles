@@ -62,7 +62,7 @@ filetype plugin indent on    " required
 "highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 
 " airline config
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 "if empty($SSH_CLIENT)
 "    let g:airline_powerline_fonts = 1
 "endif
@@ -348,6 +348,8 @@ nnoremap <leader>z call HaskellToggleQQ()
 
 " Stylish Haskell
 
+let g:disable_haskell_format = 0
+
 autocmd BufWritePost *.hs call HaskellFormat()
 
 " Vim command to format Elm files with elm-format
@@ -357,13 +359,17 @@ function! HaskellFormat() abort
         return
     endif
 
+    if g:disable_haskell_format
+        return
+    endif
+
     " save cursor position, folds and many other things
     let l:curw = {}
-    try
-      mkview!
-    catch
-      let l:curw = winsaveview()
-    endtry
+    " try
+    "   mkview!
+    " catch
+    let l:curw = winsaveview()
+    " endtry
 
     " save our undo file to be restored after we are done.
     let l:tmpundofile = tempname()
