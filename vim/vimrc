@@ -74,6 +74,9 @@ syntax enable
 " hide buffers rather than close them if unsaved changes persist on buffer switch
 set hidden
 
+" enable normal backspace behavior in insert mode
+set backspace=indent,eol,start
+
 " enable 256 colors
 set t_Co=256
 
