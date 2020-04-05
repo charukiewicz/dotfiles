@@ -353,6 +353,8 @@ nnoremap <leader>z call HaskellToggleQQ()
 
 let g:disable_haskell_format = 0
 
+autocmd BufRead,BufNewFile *.model set filetype=haskell
+
 autocmd BufWritePost *.hs call HaskellFormat()
 
 " Vim command to format Elm files with elm-format
