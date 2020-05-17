@@ -151,22 +151,8 @@ fi
 # End Virtual Env Setting
 
 
-HOSTNAME=$(cat /etc/hostname)
-if [ $HOSTNAME = "solidus" ]
-	then ICON="Ξ"
-elif [ $HOSTNAME = "cypher" ]
-	then ICON="λ"
-elif [ $HOSTNAME = "manjaro" ]
-	then ICON="λ" # ϕ
-elif [ $HOSTNAME = "monad" ]
-	then ICON="λ"
-else
-	ICON="ϕ"
-fi
+ICON="λ"
 
-if [[ -e $ICON ]]; then
-    ICON="λ"
-fi
 # Configure the final Prompt
 PS1="${venv}${LB} ${UC}${ICON} ${DC}\W ${RB}${DF} "
 }
