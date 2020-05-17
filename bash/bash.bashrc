@@ -65,11 +65,10 @@ ex ()
 # prompt
 BROWSER=/usr/bin/xdg-open
 
+PATH=~/.local/bin:$PATH
+PATH=~/.bin:$PATH
 PATH=$PATH:~/.cabal/bin:/root/.local/bin
 PATH=$PATH:~/.cabal/bin:~/bin
-PATH=$PATH:~/.bin
-PATH=$PATH:~/.local/bin
-PATH=$PATH:~/.local/bin
 PATH=$PATH:~/.npm-global/bin
 export PATH
 
@@ -151,25 +150,26 @@ else
 fi
 # End Virtual Env Setting
 
-if [ `hostname` = "solidus" ]
+
+HOSTNAME=$(cat /etc/hostname)
+if [ $HOSTNAME = "solidus" ]
 	then ICON="Ξ"
-elif [ `hostname` = "cypher" ] 
+elif [ $HOSTNAME = "cypher" ]
 	then ICON="λ"
-elif [ `hostname` = "manjaro" ]
+elif [ $HOSTNAME = "manjaro" ]
 	then ICON="λ" # ϕ
-elif [ `hostname` = "monad" ]
+elif [ $HOSTNAME = "monad" ]
 	then ICON="λ"
 else
 	ICON="ϕ"
 fi
 
+if [[ -e $ICON ]]; then
+    ICON="λ"
+fi
 # Configure the final Prompt
 PS1="${venv}${LB} ${UC}${ICON} ${DC}\W ${RB}${DF} "
 }
-
-###### END PROMPT CONFIG ######
-
-alias devmode="sh ~/scripts/devmode.sh"
 
 
 # Monitor changes in directory
@@ -180,3 +180,5 @@ export EDITOR="vim"
 export VISUAL="vim"
 
 alias vpn="sudo openvpn /etc/openvpn/client/protonvpn.conf"
+
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
