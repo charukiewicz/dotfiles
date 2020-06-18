@@ -157,6 +157,11 @@ ICON="λ"
 PS1="${venv}${LB} ${UC}${ICON} ${DC}\W ${RB}${DF} "
 }
 
+###### END PROMPT CONFIG ######
+
+NIX_CODE_DIR=/var/git/roompact/rp-backend/
+alias nixup='nix-shell --command "cd ${NIX_CODE_DIR}; return" ${NIX_CODE_DIR}shell.nix'
+alias nix-ghc-version="nix-instantiate --eval --expr '(import <nixpkgs> { }).ghc.version'"
 
 # Monitor changes in directory
 # Requires inotify-tools package
