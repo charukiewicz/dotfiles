@@ -26,6 +26,7 @@ Plugin 'pbrisbin/vim-syntax-shakespeare'
 "Plugin 'sbdchd/neoformat'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'LnL7/vim-nix'
+Plugin 'cespare/vim-toml'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -66,7 +67,7 @@ set encoding=utf-8
 "highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 
 " airline config
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 "if empty($SSH_CLIENT)
 "    let g:airline_powerline_fonts = 1
 "endif
@@ -77,6 +78,9 @@ syntax enable
 
 " hide buffers rather than close them if unsaved changes persist on buffer switch
 set hidden
+
+" enable normal backspace behavior in insert mode
+set backspace=indent,eol,start
 
 " enable 256 colors
 set t_Co=256
@@ -348,12 +352,20 @@ nnoremap <leader>z call HaskellToggleQQ()
 
 " Stylish Haskell
 
+let g:disable_haskell_format = 0
+
+autocmd BufRead,BufNewFile *.model set filetype=haskell
+
 autocmd BufWritePost *.hs call HaskellFormat()
 
 " Vim command to format Elm files with elm-format
 function! HaskellFormat() abort
     " check for elm-format
     if CheckBin('stylish-haskell', 'https://github.com/jaspervdj/stylish-haskell') ==# ''
+        return
+    endif
+
+    if g:disable_haskell_format
         return
     endif
 
