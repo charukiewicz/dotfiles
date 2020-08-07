@@ -47,6 +47,10 @@ Plugin 'cespare/vim-toml'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+set encoding=utf-8
+
+
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -241,6 +245,7 @@ autocmd BufWritePost *.elm call ElmFormat()
 
 
 
+let g:elm_format_version = '0.19'
 " Vim command to format Elm files with elm-format
 function! ElmFormat() abort
 	" check for elm-format
@@ -250,11 +255,7 @@ function! ElmFormat() abort
 
 	" save cursor position, folds and many other things
     let l:curw = {}
-    try
-      mkview!
-    catch
-      let l:curw = winsaveview()
-    endtry
+    let l:curw = winsaveview()
 
     " save our undo file to be restored after we are done.
     let l:tmpundofile = tempname()
@@ -265,7 +266,11 @@ function! ElmFormat() abort
 	call writefile(getline(1, '$'), l:tmpname)
 
 	" call elm-format on the temporary file
-	let l:out = system('elm-format ' . l:tmpname . ' --output ' . l:tmpname)
+    if filereadable('elm.json')
+        let l:out = system('elm-format ' . l:tmpname . ' --output ' . l:tmpname)
+    else
+        let l:out = system('elm-format --elm-version ' . g:elm_format_version . ' ' . l:tmpname . ' --output ' . l:tmpname)
+    endif
 
 	" if there is no error
 	if v:shell_error == 0
@@ -371,11 +376,7 @@ function! HaskellFormat() abort
 
     " save cursor position, folds and many other things
     let l:curw = {}
-    " try
-    "   mkview!
-    " catch
     let l:curw = winsaveview()
-    " endtry
 
     " save our undo file to be restored after we are done.
     let l:tmpundofile = tempname()
@@ -411,3 +412,33 @@ function! HaskellFormat() abort
       call winrestview(l:curw)
     endif
 endf
+
+
+function! DoPrettyXML()
+  " save the filetype so we can restore it later
+  let l:origft = &ft
+  set ft=
+  " delete the xml header if it exists. This will
+  " permit us to surround the document with fake tags
+  " without creating invalid xml.
+  1s/<?xml .*?>//e
+  " insert fake tags around the entire document.
+  " This will permit us to pretty-format excerpts of
+  " XML that may contain multiple top-level elements.
+  0put ='<PrettyXML>'
+  $put ='</PrettyXML>'
+  silent %!xmllint --format -
+  " xmllint will insert an <?xml?> header. it's easy enough to delete
+  " if you don't want it.
+  " delete the fake tags
+  2d
+  $d
+  " restore the 'normal' indentation, which is one extra level
+  " too deep due to the extra tags we wrapped around the document.
+  silent %<
+  " back to home
+  1
+  " restore the filetype
+  exe "set ft=" . l:origft
+endfunction
+command! PrettyXML call DoPrettyXML()
