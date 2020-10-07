@@ -173,3 +173,6 @@ export VISUAL="vim"
 alias vpn="sudo openvpn /etc/openvpn/client/protonvpn.conf"
 
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# Git Autocompleteion
+source /usr/share/git/completion/git-completion.bash
