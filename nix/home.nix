@@ -43,7 +43,6 @@
         };
       in
     [ # List all plugins: nix-env -f '<nixpkgs>' -qaP -A vimPlugins
-      Vundle-vim
       nerdtree
       syntastic
       vim-airline
