@@ -23,8 +23,9 @@
   # changes in each release.
   home.stateVersion = "20.09";
 
-  home.packages = [
-      pkgs.cloc
+  home.packages = with pkgs; [
+      cloc
+      haskellPackages.stylish-haskell
   ];
 
   programs.neovim = {
