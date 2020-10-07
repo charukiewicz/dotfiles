@@ -1,0 +1,7 @@
+set nocompatible              " be iMproved, required
+
+source ~/dotfiles/vim/vundle.vim
+
+filetype plugin indent on    " required
+
+source ~/dotfiles/vim/vimrc-config

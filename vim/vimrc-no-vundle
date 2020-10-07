@@ -1,0 +1,5 @@
+set nocompatible              " be iMproved, required
+
+filetype plugin indent on    " required
+
+source ~/dotfiles/vim/vimrc-config
