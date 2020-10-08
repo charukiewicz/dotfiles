@@ -376,3 +376,32 @@ function! DoPrettyXML()
   exe "set ft=" . l:origft
 endfunction
 command! PrettyXML call DoPrettyXML()
+
+" Auto trimming of trailing whitespace
+autocmd BufWritePre * call TrimTrailingWhitespace()
+
+function! TrimTrailingWhitespace() abort
+
+    " save cursor position, folds and many other things
+    let l:curw = {}
+    let l:curw = winsaveview()
+
+    " save our undo file to be restored after we are done.
+    let l:tmpundofile = tempname()
+    exe 'wundo! ' . l:tmpundofile
+
+    " trim trailing whitespace in the entire file
+    silent! exe '%s/\s\+$//g'
+
+    " save our undo history
+    silent! exe 'rundo ' . l:tmpundofile
+    call delete(l:tmpundofile)
+
+    " restore our cursor/windows positions, folds, etc..
+    if empty(l:curw)
+      silent! loadview
+    else
+      call winrestview(l:curw)
+    endif
+endf
+
