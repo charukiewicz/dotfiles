@@ -28,9 +28,8 @@
       haskellPackages.stylish-haskell
   ];
 
-  programs.neovim = {
+  programs.vim = {
     enable = true;
-    vimAlias = true;
     plugins = with pkgs.vimPlugins;
       let
         vim-syntax-shakespeare = pkgs.vimUtils.buildVimPlugin {
