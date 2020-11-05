@@ -53,6 +53,7 @@
       vim-nix
       vim-toml
       vim-syntax-shakespeare
+      quick-scope
     ];
     extraConfig = ''
         source ~/.vimrc
