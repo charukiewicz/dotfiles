@@ -26,6 +26,7 @@ Plugin 'pbrisbin/vim-syntax-shakespeare'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'LnL7/vim-nix'
 Plugin 'cespare/vim-toml'
+Plugin 'purescript-contrib/purescript-vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.

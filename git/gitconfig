@@ -1,0 +1,7 @@
+[user]
+	email = charukiewicz@protonmail.com
+	name = charukiewicz
+[pull]
+	rebase = false
+[core]
+    excludesfiles = ~/.gitignore_global
