@@ -26,6 +26,10 @@
   home.packages = with pkgs; [
       cloc
       haskellPackages.stylish-haskell
+      awscli2
+      stack
+      gnumake
+      irssi
   ];
 
   programs.vim = {
