@@ -22,15 +22,14 @@ in
   # changes in each release.
   home.stateVersion = "20.09";
 
-
   home.packages = with pkgs; [
     jq
     nq
     yarn
     yaml2json
+    bat
 
     nixpkgs-unstable.nix-prefetch-git
-
 
     nixpkgs-unstable.haskellPackages.cabal-install
     nixpkgs-unstable.haskellPackages.cabal2nix
@@ -42,4 +41,6 @@ in
     nixpkgs-unstable.hledger-ui
     nixpkgs-unstable.hledger-web
   ];
+
+  programs.vim = import ./vim.nix pkgs;
 }
