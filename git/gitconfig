@@ -4,4 +4,4 @@
 [pull]
 	rebase = false
 [core]
-    excludesfiles = ~/.gitignore_global
+    excludesfile = ~/.gitignore_global
