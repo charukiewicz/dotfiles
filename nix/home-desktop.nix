@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 let
-  nixpkgs-unstable = import <nixpkgs-unstable> {};
+  nixpkgs-unstable = import <nixpkgs-unstable> {
+    overlays = [
+      (import ./overlays/hledger)
+    ];
+  };
 in
 {
   # Let Home Manager install and manage itself.
