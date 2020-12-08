@@ -25,6 +25,7 @@
     vim-nix
     vim-toml
     vim-syntax-shakespeare
+    vim-ledger
     quick-scope
   ];
   extraConfig = ''
