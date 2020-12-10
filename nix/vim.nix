@@ -27,6 +27,7 @@
     vim-syntax-shakespeare
     vim-ledger
     quick-scope
+    undotree
   ];
   extraConfig = ''
       source ~/.vimrc

@@ -405,3 +405,5 @@ function! TrimTrailingWhitespace() abort
     endif
 endf
 
+" Undotree
+nnoremap <F5> :UndotreeToggle<CR>

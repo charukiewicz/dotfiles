@@ -27,6 +27,8 @@ Plugin 'neovimhaskell/haskell-vim'
 Plugin 'LnL7/vim-nix'
 Plugin 'cespare/vim-toml'
 Plugin 'purescript-contrib/purescript-vim'
+Plugin 'ledger/vim-ledger'
+Plugin 'mbbill/undotree'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
