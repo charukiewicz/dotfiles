@@ -29,7 +29,13 @@
     quick-scope
     undotree
   ];
-  extraConfig = ''
-      source ~/.vimrc
-    '';
+  extraConfig = pkgs.lib.concatStrings [
+    ''
+      set nocompatible             " be iMproved, required
+
+      filetype plugin indent on    " required
+
+    ''
+    (builtins.readFile ../vim/vimrc-config)
+  ];
 }
