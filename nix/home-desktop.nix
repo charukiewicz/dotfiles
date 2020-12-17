@@ -33,6 +33,8 @@ in
     yaml2json
     bat
 
+    nixpkgs-unstable.awscli2
+
     nixpkgs-unstable.nix-prefetch-git
 
     nixpkgs-unstable.haskellPackages.cabal-install
