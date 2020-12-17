@@ -12,6 +12,9 @@
   home.sessionVariables = {
     EDITOR = "vim";
   };
+  home.sessionPath = [
+    "~/.local/bin"
+  ] ++ (import ./secret.nix).sessionPath;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -25,11 +28,16 @@
 
   home.packages = with pkgs; [
       cloc
-      haskellPackages.stylish-haskell
-      awscli2
-      stack
-      gnumake
+      bat
+      jq
       irssi
+
+      awscli2
+
+      gnumake
+      haskellPackages.stylish-haskell
+      stack
+      cachix
   ];
 
   programs.vim = import ./vim.nix pkgs;
