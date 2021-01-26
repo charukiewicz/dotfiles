@@ -36,11 +36,17 @@
 
       gnumake
       haskellPackages.stylish-haskell
+      haskellPackages.hasktags
       stack
       cachix
   ];
 
-  programs.bash.initExtra = builtins.readFile ../bash/custom_prompt.sh;
+  programs.bash = {
+    initExtra = builtins.readFile ../bash/custom_prompt.sh;
+    shellAliases = {
+      mkhasktags = "find . -name *.hs | hasktags -cxL STDIN";
+    };
+  };
 
   programs.vim = import ./vim.nix pkgs;
 }
