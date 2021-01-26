@@ -2,7 +2,7 @@
 let
   nixpkgs-unstable = import <nixpkgs-unstable> {
     overlays = [
-      (import ./overlays/hledger)
+      # (import ./overlays/...)
     ];
   };
 in
