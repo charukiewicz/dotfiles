@@ -40,6 +40,7 @@ in
     nixpkgs-unstable.haskellPackages.cabal-install
     nixpkgs-unstable.haskellPackages.cabal2nix
     nixpkgs-unstable.haskellPackages.ghcid
+    nixpkgs-unstable.haskellPackages.hasktags
 
     nixpkgs-unstable.elmPackages.elm
 
