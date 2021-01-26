@@ -40,5 +40,7 @@
       cachix
   ];
 
+  programs.bash.initExtra = builtins.readFile ../bash/custom_prompt.sh;
+
   programs.vim = import ./vim.nix pkgs;
 }
