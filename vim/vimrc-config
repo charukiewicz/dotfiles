@@ -409,3 +409,5 @@ endf
 nnoremap <F5> :UndotreeToggle<CR>
 
 nnoremap <leader>ts :tjump <C-r><C-w><CR>
+nnoremap <leader>n :tnext<CR>
+nnoremap <leader>b :tprevious<CR>
