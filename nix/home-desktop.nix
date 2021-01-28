@@ -10,7 +10,6 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "christian";
@@ -25,6 +24,10 @@ in
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "20.09";
+
+  imports = [
+    ./modules/vim.nix
+  ];
 
   home.packages = with pkgs; [
     jq
@@ -49,5 +52,4 @@ in
     nixpkgs-unstable.hledger-web
   ];
 
-  programs.vim = import ./vim.nix pkgs;
 }

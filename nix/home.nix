@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs.bash.enable = true;
@@ -26,10 +27,15 @@
   # changes in each release.
   home.stateVersion = "20.09";
 
+  imports = [
+    ./modules/vim.nix
+  ];
+
   home.packages = with pkgs; [
       cloc
       bat
       jq
+      tree
       irssi
 
       awscli2
@@ -48,5 +54,4 @@
     };
   };
 
-  programs.vim = import ./vim.nix pkgs;
 }
