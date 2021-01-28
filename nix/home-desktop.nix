@@ -26,7 +26,7 @@ in
   home.stateVersion = "20.09";
 
   imports = [
-    ./modules/vim.nix
+    ./modules/vim
   ];
 
   home.packages = with pkgs; [
