@@ -3,6 +3,7 @@ let
   nixpkgs-unstable = import <nixpkgs-unstable> {
     overlays = [
       # (import ./overlays/...)
+      (import ./overlays/ticker)
     ];
   };
 in
@@ -35,6 +36,8 @@ in
     yarn
     yaml2json
     bat
+
+    nixpkgs-unstable.ticker
 
     nixpkgs-unstable.awscli2
 
