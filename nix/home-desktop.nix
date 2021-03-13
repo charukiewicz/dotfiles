@@ -10,7 +10,6 @@ in
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  programs.bash.enable = true;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -31,6 +30,7 @@ in
   home.stateVersion = "20.09";
 
   imports = [
+    ./modules/bash
     ./modules/vim
     ./modules/tmux
     ./modules/git
