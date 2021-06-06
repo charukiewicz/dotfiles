@@ -36,6 +36,9 @@ in
     ./modules/git
   ];
 
+  # Use the native 'man' to avoid issues with locale
+  programs.man.enable = false;
+
   home.packages = with pkgs; [
     jq
     nq
