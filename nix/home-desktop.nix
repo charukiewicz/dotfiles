@@ -29,6 +29,12 @@ in
   # changes in each release.
   home.stateVersion = "21.05";
 
+  home.activation = {
+    stylishHaskellCfg = ''
+        ln -sf ~/dotfiles/haskell/stylish-haskell.yaml ~/.stylish-haskell.yaml
+      '';
+  };
+
   imports = [
     ./modules/bash
     ./modules/vim
@@ -56,6 +62,7 @@ in
     nixpkgs-unstable.haskellPackages.cabal2nix
     nixpkgs-unstable.haskellPackages.ghcid
     nixpkgs-unstable.haskellPackages.hasktags
+    nixpkgs-unstable.haskellPackages.stylish-haskell
 
     nixpkgs-unstable.elmPackages.elm
 
