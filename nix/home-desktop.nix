@@ -15,9 +15,9 @@ in
   # paths it should manage.
   home.username = "christian";
   home.homeDirectory = "/home/christian";
-  home.sessionVariables = {
+  home.sessionVariables = ({
     EDITOR = "vim";
-  };
+  } // (import ./secret.nix).sessionVariables);
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
