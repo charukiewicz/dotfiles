@@ -10,9 +10,9 @@
   # paths it should manage.
   home.username = "christian";
   home.homeDirectory = "/home/christian";
-  home.sessionVariables = {
+  home.sessionVariables = ({
     EDITOR = "vim";
-  };
+  } // (import ./secret.nix).sessionVariables);
   home.sessionPath = [
     "~/.local/bin"
   ] ++ (import ./secret.nix).sessionPath;
@@ -25,7 +25,7 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "20.09";
+  home.stateVersion = "21.05";
 
   imports = [
     ./modules/vim
