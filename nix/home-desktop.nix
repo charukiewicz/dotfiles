@@ -51,10 +51,9 @@ in
     yarn
     yaml2json
     bat
+    awscli2
 
     nixpkgs-unstable.ticker
-
-    nixpkgs-unstable.awscli2
 
     nixpkgs-unstable.nix-prefetch-git
 
