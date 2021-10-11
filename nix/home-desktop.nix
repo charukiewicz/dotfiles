@@ -53,6 +53,12 @@ in
     bat
     awscli2
 
+    hledger
+    hledger-ui
+    hledger-web
+
+    elmPackages.elm
+
     nixpkgs-unstable.ticker
 
     nixpkgs-unstable.nix-prefetch-git
@@ -63,11 +69,7 @@ in
     nixpkgs-unstable.haskellPackages.hasktags
     nixpkgs-unstable.haskellPackages.stylish-haskell
 
-    nixpkgs-unstable.elmPackages.elm
 
-    nixpkgs-unstable.hledger
-    nixpkgs-unstable.hledger-ui
-    nixpkgs-unstable.hledger-web
   ];
 
 }
