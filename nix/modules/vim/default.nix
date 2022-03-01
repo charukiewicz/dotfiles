@@ -22,6 +22,15 @@
             sha256 = "1ikv3cpgnwnv8prwgin3936f74cjz3m006lvyfwd1jf3bxk8f80d";
           };
         };
+        vim-urweb = pkgs.vimUtils.buildVimPlugin {
+          name = "vim-urweb";
+          src = pkgs.fetchFromGitHub {
+            owner = "steinuil";
+            repo = "urweb.vim";
+            rev = "4eaf6eed7f30191897b566c173cf8332c3e02583";
+            sha256 = "08fq6rd65q3jp2b66fi8c040lhnzvvbqv13px20zwyrzffxhq0b9";
+          };
+        };
       in
     [ # List all plugins: nix-env -f '<nixpkgs>' -qaP -A vimPlugins
       nerdtree
@@ -39,6 +48,9 @@
       quick-scope
       undotree
       vim-blade
+      vim-urweb
+      dhall-vim
+      fennel-vim
     ];
     extraConfig = pkgs.lib.concatStrings [
       ''
