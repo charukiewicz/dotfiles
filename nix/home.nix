@@ -1,4 +1,11 @@
 { config, pkgs, ... }:
+let
+  nixpkgs-unstable = import <nixos-unstable> {
+    overlays = [
+      # (import ./overlays/...)
+    ];
+  };
+in
 
 {
 
@@ -25,7 +32,7 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "21.05";
+  home.stateVersion = "21.11";
 
   imports = [
     ./modules/vim
@@ -41,6 +48,7 @@
       awscli2
 
       gnumake
+
       haskellPackages.stylish-haskell
       haskellPackages.hasktags
       stack
