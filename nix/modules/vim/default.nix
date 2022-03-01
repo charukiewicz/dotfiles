@@ -13,6 +13,15 @@
             sha256 = "0h79c3shzf08g7mckc7438vhfmxvzz2amzias92g5yn1xcj9gl5i";
           };
         };
+        vim-blade = pkgs.vimUtils.buildVimPlugin {
+          name = "vim-blade";
+          src = pkgs.fetchFromGitHub {
+            owner = "jwalton512";
+            repo = "vim-blade";
+            rev = "9534101808cc320eef003129a40cab04b026a20c";
+            sha256 = "1ikv3cpgnwnv8prwgin3936f74cjz3m006lvyfwd1jf3bxk8f80d";
+          };
+        };
       in
     [ # List all plugins: nix-env -f '<nixpkgs>' -qaP -A vimPlugins
       nerdtree
@@ -29,6 +38,7 @@
       vim-ledger
       quick-scope
       undotree
+      vim-blade
     ];
     extraConfig = pkgs.lib.concatStrings [
       ''
