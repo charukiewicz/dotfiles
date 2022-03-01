@@ -7,3 +7,5 @@
     excludesfile = ~/.gitignore_global
 [init]
 	defaultBranch = master
+[alias]
+    hs = "log --pretty='%C(yellow)%h %C(cyan)%cd %Cblue%aN%C(auto)%d %Creset%s' --graph --date=relative --date-order"
