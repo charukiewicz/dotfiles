@@ -31,6 +31,15 @@
             sha256 = "08fq6rd65q3jp2b66fi8c040lhnzvvbqv13px20zwyrzffxhq0b9";
           };
         };
+        vim-ejs-syntax = pkgs.vimUtils.buildVimPlugin {
+          name = "ejs-syntax";
+          src = pkgs.fetchFromGitHub {
+            owner = "nikvdp";
+            repo = "ejs-syntax";
+            rev = "0e704c523dacfda547215b5936067869e79103c4";
+            sha256 = "1wygbizwbjmh9vpvwa8nvswfkd7637dmw7ylf5am6bv71dghczpn";
+          };
+        };
       in
     [ # List all plugins: nix-env -f '<nixpkgs>' -qaP -A vimPlugins
       nerdtree
@@ -51,6 +60,7 @@
       vim-urweb
       dhall-vim
       fennel-vim
+      vim-ejs-syntax
     ];
     extraConfig = pkgs.lib.concatStrings [
       ''
