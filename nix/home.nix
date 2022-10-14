@@ -51,7 +51,7 @@ in
 
       haskellPackages.stylish-haskell
       haskellPackages.hasktags
-      stack
+      nixpkgs-unstable.stack
       cachix
   ];
 
