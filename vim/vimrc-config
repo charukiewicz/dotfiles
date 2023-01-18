@@ -7,6 +7,9 @@ let g:airline_powerline_fonts = 1
 "endif
 set laststatus=2
 
+"set term=xterm-256color
+" enable 256 colors
+" set t_Co=256
 " enable language-specific syntax highlighting
 syntax enable
 
@@ -16,11 +19,16 @@ set hidden
 " enable normal backspace behavior in insert mode
 set backspace=indent,eol,start
 
-" enable 256 colors
-set t_Co=256
 
+" set termguicolors
+set t_Co=256
 " set color theme
-colo elflord
+
+" The official vim colorschemes were completely remade in 2022, breaking the
+" colors on many terminals, so we have our own copy of the legacy 'elflord'
+" that keeps the configuration portable.
+source ~/dotfiles/vim/colors/elflord-legacy.vim
+
 
 " show line numbers
 set number
