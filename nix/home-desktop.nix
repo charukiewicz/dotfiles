@@ -3,7 +3,7 @@ let
   nixpkgs-unstable = import <nixpkgs-unstable> {
     overlays = [
       # (import ./overlays/...)
-      (import ./overlays/ticker)
+      #(import ./overlays/ticker)
     ];
   };
 in
@@ -27,7 +27,7 @@ in
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "21.11";
+  home.stateVersion = "22.05";
 
   home.activation = {
     stylishHaskellCfg = ''
@@ -68,7 +68,6 @@ in
     nixpkgs-unstable.haskellPackages.ghcid
     nixpkgs-unstable.haskellPackages.hasktags
     nixpkgs-unstable.haskellPackages.stylish-haskell
-
 
   ];
 

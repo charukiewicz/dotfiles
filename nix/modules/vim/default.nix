@@ -51,6 +51,7 @@
       vim-urweb
       dhall-vim
       fennel-vim
+      vimwiki
     ];
     extraConfig = pkgs.lib.concatStrings [
       ''
