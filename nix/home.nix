@@ -32,7 +32,7 @@ in
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "22.11";
+  home.stateVersion = "23.11";
 
   imports = [
     ./modules/vim
@@ -49,7 +49,7 @@ in
 
       gnumake
 
-      haskellPackages.stylish-haskell
+      nixpkgs-unstable.haskellPackages.stylish-haskell
       haskellPackages.hasktags
       nixpkgs-unstable.stack
       cachix
